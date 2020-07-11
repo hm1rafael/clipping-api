@@ -14,7 +14,11 @@
         <spring.gcp.version>1.2.3.RELEASE</spring.gcp.version>
         <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
         <open.api.ui.version>1.2.32</open.api.ui.version>
+        <assertj.version>3.16.1</assertj.version>
         <lombok.version>1.18.12</lombok.version>
+        <maven.surefire.version>2.22.2</maven.surefire.version>
+        <mockito.version>3.3.3</mockito.version>
+        <jsoup.version>1.11.3</jsoup.version>
     </properties>
 
     <dependencyManagement>
@@ -43,6 +47,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${open.api.ui.version}</version>
@@ -56,10 +66,31 @@
         </dependency>
 
         <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>4.0.3</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -70,6 +101,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
             </plugin>
         </plugins>
     </build>

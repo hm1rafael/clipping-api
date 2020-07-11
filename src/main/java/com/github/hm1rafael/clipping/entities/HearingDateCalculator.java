@@ -6,11 +6,16 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 @UtilityClass
-class DateCalculator {
+class HearingDateCalculator {
     private final int OFFSET_FROM_SATURDAY = 2;
     private final int OFFSET_FROM_SUNDAY = 1;
+    public final int DEFAULT_OFFSET = 3;
 
-    public LocalDate calculateNextBusinessDate(LocalDate date, Integer offset) {
+    public LocalDate calculateNextBusinessDate(LocalDate date) {
+        return calculateNextBusinessDate(date, DEFAULT_OFFSET);
+    }
+
+    private LocalDate calculateNextBusinessDate(LocalDate date, Integer offset) {
         if (offset <= 0) {
             return date;
         }

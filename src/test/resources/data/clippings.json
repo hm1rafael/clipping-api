@@ -1,0 +1,28 @@
+[
+  {
+    "clippingDate":"2020-06-24",
+    "clippingMatter":"Processo Nº 9999999-99.9999.9.99.9999 <br/>RECLAMANTE FULANO<br/> ADVOGADO Beltrano(OAB: 99999-SC) <br/>RECLAMADO CICLANO.<br/> Fica V. Sa. intimado para tomar ciência do seguinte documento:<br/> Lorem ipsum <br/> CONCLUSÃO Nesta data, faço o feito concluso. DECISÃO Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Aguarde-se por 30 dias, sob pena de arquivamento e da início do prazo previsto no art. 11-A da CLT. Intime-se. Florianópolis/SC, 24 de junho de 2020.",
+    "classificationType":"DEADLINE",
+    "classifiedDate":"2020-07-24",
+    "important":true
+  },
+  {
+    "clippingDate":"2020-06-24",
+    "clippingMatter":"Processo Nº 9999999-99.9999.9.99.9999 <br/>RECLAMANTE FULANO<br/> ADVOGADO Beltrano(OAB: 99999-SC) <br/>RECLAMADO CICLANO.<br/> Decisão: “Conforme disposição expressa na Portaria nº 999/9999, emanada da Diretoria do Fórum XYZ, designo sessão de Conciliação para a data de 20/07/2020 às 10:00h na sala da COOPERAÇÃO 00, no Centro Judiciário ABC. Encaminho os presentes autos à CDE respectiva para a confecção dos expedientes necessários.”",
+    "classificationType":"HEARING",
+    "classifiedDate":"2020-07-20",
+    "classifiedTime":"10:00",
+    "important":true
+  },
+  {
+    "clippingDate":"2020-06-24",
+    "clippingMatter":"Processo Nº 9999999-99.9999.9.99.9999 <br/>RECLAMANTE FULANO<br/> ADVOGADO Beltrano(OAB: 99999-SC) <br/>RECLAMADO CICLANO.<br/> Decisão: “Conforme disposição expressa na Portaria nº 999/9999, emanada da Diretoria do Fórum XYZ, designo sessão de Conciliação para a data de 30/07/2020 às 11:30h na sala da COOPERAÇÃO 00, no Centro Judiciário ABC. Encaminho os presentes autos à CDE respectiva para a confecção dos expedientes necessários.”",
+    "classificationType":"HEARING",
+    "important":true
+  },
+  {
+    "clippingDate":"2020-06-23",
+    "clippingMatter":"Processo Nº 9999999-99.9999.9.99.9999 <br/>RECLAMANTE FULANO<br/> ADVOGADO Beltrano(OAB: 99999-SC) <br/>RECLAMADO CICLANO.<br/> Fica V. Sa. intimado para tomar ciência do seguinte documento:<br/> Lorem ipsum <br/> Processo registrado em 23/06/2020 às 17:00 Florianópolis/SC, 23 de junho de 2020.",
+    "important":false
+  }
+]

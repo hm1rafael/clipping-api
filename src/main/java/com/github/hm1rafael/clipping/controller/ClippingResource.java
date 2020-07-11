@@ -2,6 +2,7 @@ package com.github.hm1rafael.clipping.controller;
 
 import com.github.hm1rafael.clipping.entities.Clipping;
 import com.github.hm1rafael.clipping.repositories.ClippingRepository;
+import com.google.api.client.util.Lists;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
