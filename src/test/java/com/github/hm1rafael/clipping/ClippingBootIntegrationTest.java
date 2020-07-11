@@ -40,7 +40,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class ClippingBootIntegrationTest {
 
-    public static final int TIMEOUT = 15;
+    private static final int TIMEOUT = 15;
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -120,7 +120,7 @@ public class ClippingBootIntegrationTest {
 
         clippingRepository.findById(page.content.get(1).getId())
                 .map(Clipping::isConfirmation)
-                .ifPresentOrElse(confirmation -> Assertions.assertThat(confirmation).isFalse(), IllegalStateException::new);
+                .ifPresentOrElse(confirmation -> Assertions.assertThat(confirmation).isFalse(), () -> Assertions.fail("Incorrect confirmation"));
     }
 
     @Test
@@ -139,6 +139,8 @@ public class ClippingBootIntegrationTest {
                 .andExpect(status().isNoContent());
         mockMvc.perform(get("/api/clipping/{id}", id))
                 .andExpect(status().isNotFound());
+        Awaitility.waitAtMost(TIMEOUT, TimeUnit.SECONDS)
+                .until(() -> StreamSupport.stream(clippingRepository.findAll().spliterator(), Boolean.FALSE).count() == 3);
     }
 
     @Test
