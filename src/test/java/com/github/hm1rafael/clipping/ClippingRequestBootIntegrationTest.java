@@ -218,16 +218,6 @@ public class ClippingRequestBootIntegrationTest {
     }
 
     @Test
-    void invalidClippingPaginationRequest() throws Exception {
-        mockMvc.perform(get("/api/clipping/"))
-                .andExpect(status().isBadRequest());
-        mockMvc.perform(get("/api/clipping/").param("size", "2"))
-                .andExpect(status().isBadRequest());
-        mockMvc.perform(get("/api/clipping/").param("page", "0"))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
     void loadAlerts() throws Exception {
         awaitForRepositoryOperation(this::persistClippings, 4);
         String content = mockMvc.perform(get("/api/user/alerts"))
@@ -237,7 +227,7 @@ public class ClippingRequestBootIntegrationTest {
                 .getResponse()
                 .getContentAsString(StandardCharsets.UTF_8);
 
-        Page<Alert> alert = objectMapper.readValue(content, new TypeReference<Page<Alert>>() {
+        Page<Alert> alert = objectMapper.readValue(content, new TypeReference<>() {
         });
 
         assertThat(alert.content)

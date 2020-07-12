@@ -2,14 +2,12 @@ package com.github.hm1rafael.clipping.controller;
 
 import com.github.hm1rafael.clipping.entities.Clipping;
 import com.github.hm1rafael.clipping.entities.ClippingRequest;
-import com.github.hm1rafael.clipping.entities.Pagination;
 import com.github.hm1rafael.clipping.repositories.ClippingRepository;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,10 +43,9 @@ public class ClippingResource {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Clippings found")
     })
-    public Page<Clipping> findAll(@Valid Pagination pagination) {
-        Pageable pageRequest = PageRequest.of(pagination.getPage(), pagination.getSize());
-        logger.info("Parameters {}", pageRequest);
-        return clippingRepository.findAll(pageRequest);
+    public Page<Clipping> findAll(Pageable pagination) {
+        logger.info("Parameters {}", pagination);
+        return clippingRepository.findAll(pagination);
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
