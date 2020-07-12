@@ -1,6 +1,8 @@
 Requirements
 ===========
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b19d54782cd415b9e3487da813caba7)](https://app.codacy.com/manual/hm1rafael/clipping-api?utm_source=github.com&utm_medium=referral&utm_content=hm1rafael/clipping-api&utm_campaign=Badge_Grade_Dashboard)
+
 - Java 11
 - Maven 3.6
 - Google cloud SDK
