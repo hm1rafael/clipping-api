@@ -1,64 +1,56 @@
 package com.github.hm1rafael.clipping.entities;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import lombok.AccessLevel;
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import org.apache.commons.lang3.StringUtils;
+import lombok.NoArgsConstructor;
 import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.util.Pair;
+import org.springframework.data.annotation.Reference;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Objects;
 
 @Getter
-@Builder
-@ToString
-@EqualsAndHashCode
 @Entity
-@JsonDeserialize(builder = Clipping.ClippingBuilder.class)
+@EqualsAndHashCode
+@NoArgsConstructor
 public class Clipping {
     @Id
     private Long id;
-    @NotNull
     private String clippingMatter;
-    private ClassificationType classificationType;
-    @NotNull
     private LocalDate clippingDate;
-    private LocalDate classifiedDate;
-    private String classifiedTime;
-    private boolean important;
-    @Setter(AccessLevel.NONE)
-    private boolean confirmation;
+    private ClassificationType classificationType;
+    private boolean confirmed;
+    @Reference
+    @JsonIgnore
+    private Alert alert;
+    @Reference
+    @JsonIgnore
+    private HearingAppointment hearingAppointment;
 
-    public boolean isHearing() {
-        return classificationType == ClassificationType.HEARING;
+    public Clipping(ClippingRequest clippingRequest) {
+        this.clippingMatter = clippingRequest.getClippingMatter();
+        this.clippingDate = clippingRequest.getClippingDate();
+        this.classificationType = clippingRequest.getClassificationType();
+        this.alert = buildAlertIfNeeded(clippingRequest);
+        this.hearingAppointment = buildHearingIfNeeded(clippingRequest);
     }
 
-    @JsonPOJOBuilder(withPrefix = StringUtils.EMPTY)
-    public static class ClippingBuilder {
-        private void populateClassifiedDateAndTime(Pair<LocalDate, String> pair) {
-            classifiedDate = pair.getFirst();
-            classifiedTime = pair.getSecond();
+    private HearingAppointment buildHearingIfNeeded(ClippingRequest clippingRequest) {
+        if (clippingRequest.isHearing()) {
+            return new HearingAppointment(clippingRequest);
         }
+        return null;
+    }
 
-        public Clipping build() {
-            if (Objects.isNull(classifiedDate)) {
-                ClassifiedDateExtractor.extract(clippingMatter).ifPresentOrElse(
-                        this::populateClassifiedDateAndTime,
-                        () -> classifiedDate = HearingDateCalculator.calculateNextBusinessDate(clippingDate));
-            }
-            return new Clipping(id, clippingMatter, classificationType, clippingDate, classifiedDate, classifiedTime, important, confirmation);
+    private Alert buildAlertIfNeeded(ClippingRequest clippingRequest) {
+        if (clippingRequest.isImportant()) {
+            return new Alert();
         }
+        return null;
     }
 
     public void confirm() {
-        confirmation = Boolean.TRUE;
+        confirmed = Boolean.TRUE;
     }
 }

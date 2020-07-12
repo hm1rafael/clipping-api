@@ -6,7 +6,6 @@ import com.google.cloud.NoCredentials;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.cloud.gcp.data.datastore.core.DatastoreTransactionManager;
 import org.springframework.cloud.gcp.data.datastore.repository.config.EnableDatastoreRepositories;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;

@@ -3,7 +3,7 @@ package com.github.hm1rafael.clipping.controller;
 import com.github.hm1rafael.clipping.entities.Alert;
 import com.github.hm1rafael.clipping.entities.HearingAppointment;
 import com.github.hm1rafael.clipping.repositories.AlertRepository;
-import com.github.hm1rafael.clipping.repositories.HearingAppointmentRepository;
+import com.github.hm1rafael.clipping.repositories.HearingRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserResource {
 
     private final AlertRepository alertRepository;
-    private final HearingAppointmentRepository hearingAppointmentRepository;
+    private final HearingRepository hearingRepository;
 
-    public UserResource(AlertRepository alertRepository, HearingAppointmentRepository hearingAppointmentRepository) {
+    public UserResource(AlertRepository alertRepository, HearingRepository hearingRepository) {
         this.alertRepository = alertRepository;
-        this.hearingAppointmentRepository = hearingAppointmentRepository;
+        this.hearingRepository = hearingRepository;
     }
 
     @GetMapping("/alerts")
@@ -29,7 +29,7 @@ public class UserResource {
 
     @GetMapping("/hearings")
     public Page<HearingAppointment> hearings(Pageable pageable) {
-        return hearingAppointmentRepository.findAll(pageable);
+        return hearingRepository.findAll(pageable);
     }
 
 }
