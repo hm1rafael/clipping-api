@@ -1,5 +1,6 @@
 package com.github.hm1rafael.clipping.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
@@ -20,6 +21,7 @@ public class ClippingRequest {
     private String classifiedTime;
     private boolean important;
 
+    @JsonIgnore
     public boolean isHearing() {
         return classificationType == ClassificationType.HEARING;
     }

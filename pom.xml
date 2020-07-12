@@ -6,7 +6,7 @@
 
     <groupId>com.hm1rafael</groupId>
     <artifactId>publication-api</artifactId>
-    <version>1</version>
+    <version>1.0.0</version>
 
     <properties>
         <maven.compiler.target>11</maven.compiler.target>
@@ -116,6 +116,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.github.hm1rafael.clipping.ClippingBoot</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -126,7 +136,7 @@
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>${appengine.version}</version>
                 <configuration>
-                    <version>${project.version}</version>
+                    <version>app</version>
                     <projectId>GCLOUD_CONFIG</projectId>
                 </configuration>
             </plugin>
