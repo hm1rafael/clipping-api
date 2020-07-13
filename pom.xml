@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hm1rafael</groupId>
-    <artifactId>publication-api</artifactId>
+    <artifactId>clipping-api</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -140,7 +140,6 @@
                     </execution>
                     <execution>
                         <id>report</id>
-                        <phase>prepare-package</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
@@ -162,5 +161,34 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>codecoverage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.gavinmogan</groupId>
+                        <artifactId>codacy-maven-plugin</artifactId>
+                        <version>1.2.0</version>
+                        <configuration>
+                            <coverageReportFile>${project.reporting.outputDirectory}/jacoco.xml</coverageReportFile>
+                            <codacyApiBaseUrl>https://api.codacy.com</codacyApiBaseUrl>
+                            <failOnMissingReportFile>false</failOnMissingReportFile>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>post-test</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>coverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
