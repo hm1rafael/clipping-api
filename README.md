@@ -111,7 +111,6 @@ test:
  
 Swagger documentation
 --
-You can take a look on to check schemas and endpoints
 http://localhost:8080/swagger-ui 
  
 Demo application
