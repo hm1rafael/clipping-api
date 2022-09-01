@@ -18,7 +18,7 @@
         <lombok.version>1.18.12</lombok.version>
         <maven.surefire.version>2.22.2</maven.surefire.version>
         <mockito.version>3.3.3</mockito.version>
-        <jsoup.version>1.11.3</jsoup.version>
+        <jsoup.version>1.15.3</jsoup.version>
         <awaitility.version>4.0.3</awaitility.version>
         <appengine.version>2.3.0</appengine.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
